@@ -63,7 +63,7 @@ cpdef naiveCall(float[:,::1] L, signed char[:,:,::1] G, float d, int t):
     with nogil:
         for s in prange(m, num_threads=t):
             for i in range(n):
-                if fabs(L[s,3*i+0] - 0.333333) < 0.00001:
+                if (fabs(L[s,3*i+0] - 0.333333) < 0.00001) & (fabs(L[s,3*i+1] - 0.333333) < 0.00001):
                     G[s,i,0] = 0
                     G[s,i,1] = 0
                 else:
